@@ -1,5 +1,5 @@
 <script type="text/javascript">
-      //Função validar Email: onkeypress="return SomenteEmail();"
+      //Função validar Email: onblur="ValidaEmail(this);"
       function ValidaEmail(campo){
         if(campo.value!='' && campo.value!=null)
         {
