@@ -218,39 +218,7 @@
       }
 
 }   
-
-    const urlUF = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados'
-    const cidades = document.getElementById('selectCidade')
-    const uf = document.getElementById('selectEstado')
-
-    uf.addEventListener('change', async function(){
-        const urlCidades = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/'+uf.value+'/municipios'
-        const request = await fetch(urlCidades)
-        const response = await request.json()
-        console.log(response.length)
-
-        let options = ''
-        response.forEach(function(cidades){
-            options += '<option>' +cidades.nome+'</option>'
-        })
-        cidades.innerHTML = options;
-    })
-
-    window.addEventListener('load', async ()=>{
-        const request = await fetch(urlUF)
-        const response = await request.json()
-
-        const options = document.createElement("optgroup")
-        options.setAttribute('label', 'UFs')
-        response.forEach(function(uf){
-            options.innerHTML += '<option>'+uf.sigla+'</option>'
-        })
-        response.sort((a, b) => (a.sigla > b.sigla ? 1 : -1))
-        uf.append(options)
-    })
-
-
-    //Função validar data
+    //Função validar data: onblur="ValidaData(this, event);"
     function ValidaData(campo){
     var erro = true;
     if(campo.value != '')
@@ -318,4 +286,35 @@
         campo.value = datainteira;
     }
 }
+</script>
+<script>
+    const urlUF = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados'
+    const cidades = document.getElementById('selectCidade')
+    const uf = document.getElementById('selectEstado')
+
+    uf.addEventListener('change', async function(){
+        const urlCidades = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/'+uf.value+'/municipios'
+        const request = await fetch(urlCidades)
+        const response = await request.json()
+        console.log(response.length)
+
+        let options = ''
+        response.forEach(function(cidades){
+            options += '<option>' +cidades.nome+'</option>'
+        })
+        cidades.innerHTML = options;
+    })
+
+    window.addEventListener('load', async ()=>{
+        const request = await fetch(urlUF)
+        const response = await request.json()
+        response.sort((a, b) => a.nome.localeCompare(b.nome))
+
+        const options = document.createElement("optgroup")
+        options.setAttribute('label', 'UFs')
+        response.forEach(function(uf){
+            options.innerHTML += '<option>'+uf.sigla+'</option>'
+        })
+        uf.append(options)
+    })
 </script>
