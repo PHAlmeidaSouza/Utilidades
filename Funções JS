@@ -32,7 +32,7 @@
       var tecla=(window.event)?event.keyCode:e.which;   
       if((tecla>64 && tecla<91)) return true;
       else{
-      if (tecla>96 && tecla<123 || tecla==32 || tecla==227 || tecla==241 || tecla==0245 || tecla==195 || tecla==209 || tecla==213 || tecla==231) return true;
+      if (tecla>96 && tecla<123 || tecla==32 || tecla==227 || tecla==241 || tecla==0245 || tecla==195 || tecla==209 || tecla==213 || tecla==231 || tecla==225 || tecla== 233 || tecla== 237 || tecla== 243 || tecla== 250 || tecla== 193 || tecla== 201 || tecla== 205 || tecla== 211 || tecla== 218) return true;
       else  return false;
       }
   
