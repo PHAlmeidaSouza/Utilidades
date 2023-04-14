@@ -429,7 +429,7 @@
       }
 
 }   
-    //Função validar data
+    //Função validar data: onblur="ValidaData(this, event);"
     function ValidaData(campo){
     var erro = true;
     if(campo.value != '')
